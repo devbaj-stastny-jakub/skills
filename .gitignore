@@ -1,0 +1,28 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Logs & temp
+*.log
+tmp/
+.tmp/
+
+# Node / Python (helper scripts inside skills)
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+
+# Skill eval / workspace output
+*-workspace/
