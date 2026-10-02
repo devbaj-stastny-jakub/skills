@@ -14,7 +14,7 @@ scripts/     helper scripts (install, etc.)
 
 | Skill | Description |
 | ----- | ----------- |
-| _none yet_ | |
+| [pr-composer](skills/pr-composer/SKILL.md) | Compose and create/update a pull request from the branch, respecting the repository's policy and conventions. |
 
 ## Install
 

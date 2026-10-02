@@ -26,3 +26,6 @@ __pycache__/
 
 # Skill eval / workspace output
 *-workspace/
+
+# Personal scratch space (research, drafts)
+scratch/
