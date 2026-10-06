@@ -29,3 +29,6 @@ __pycache__/
 
 # Personal scratch space (research, drafts)
 scratch/
+
+# Eval results
+evals/*/results/

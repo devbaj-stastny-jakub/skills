@@ -6,6 +6,7 @@ Personal collection of [Claude Code](https://claude.com/claude-code) skills for 
 
 ```
 skills/      one folder per skill, each with a SKILL.md
+evals/       benchmark harnesses per skill (see evals/bug-spray/README.md)
 docs/        authoring notes and conventions
 scripts/     helper scripts (install, etc.)
 ```
@@ -14,6 +15,8 @@ scripts/     helper scripts (install, etc.)
 
 | Skill | Description |
 | ----- | ----------- |
+| [bug-spray](skills/bug-spray/SKILL.md) | Multi-agent code review of local changes: axis reviewers find, independent graders verify, filtered findings in the terminal. |
+| [hive-mind](skills/hive-mind/SKILL.md) | Autonomously implement a spec's tickets: fresh implementer, functional and design tester, and fixer agents per ticket, bug-spray at the end. |
 | [pr-composer](skills/pr-composer/SKILL.md) | Compose and create/update a pull request from the branch, respecting the repository's policy and conventions. |
 
 ## Install
