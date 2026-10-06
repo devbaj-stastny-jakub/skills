@@ -6,6 +6,7 @@ description: Compose and create/update a pull request from the branch, respectin
 # Inputs (variables)
 - `Source Branch`: branch which we are merging (optional)
 - `Target Branch`: branch which we are merging `Source Branch` to (optional)
+- `Draft`: create pull request as draft (optional, default false). `Create` mode only
 
 # Modes
 - `Create` - pull request does not exist yet
@@ -38,7 +39,7 @@ Get list of all available labels from repository and pick appropriate ones. Do n
 Compose description for base diff using `references/pr.template.md`
 
 ## 6. Create/Update pull request
-Create or update pull request based on resolved mode with new description and labels
+Create or update pull request based on resolved mode with new title, description and labels. With `Draft`, create it as draft. Update never changes draft state
 
 
 ## Guardrails
