@@ -17,6 +17,7 @@ Fully autonomous after preflight. Ask the user only during preflight.
 ## Preflight
 
 1. **Skills**: check if you have all necessary skills - `tdd`, `code-review`, `bug-spray`, `pr-composer`. If something missing -> stop and prompt user
+2. **Worktree**: ask user if he wants to run in a separate worktree or stay in place. If worktree, call `EnterWorktree` tool.
 
 ## Steps
 
@@ -26,7 +27,7 @@ Read the spec and tickets to understand the task graph
 
 ### Step 2
 
-Create **integration branch** `beekeeper/<YYYYMMDD-HHMMSS>`
+Create **integration branch** `babysit/<YYYYMMDD-HHMMSS>`
 
 ### Step 3
 
@@ -61,4 +62,4 @@ Cleanup all implementer subagent worktrees
 
 ### Step 8
 
-Create draft pr using `pr-composer` skill
+Rename implementation branch according to repository standards and create draft pull requests using `pr-composer` skill
