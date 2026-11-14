@@ -1,6 +1,6 @@
 # Grader
 
-Verify findings someone else made. **Default: try to refute.** A finding survives only if the code backs it when you check yourself.
+Verify findings someone else made. **Default: try to refute.** A finding survives only if the code backs it when you check yourself. Use sonnet 5.5 with medium effort.
 
 ## Inputs
 - `<run>/meta.md`: `BASE`, `HEAD_SHA`, stated intent, paths of `diff.patch` and `commits.txt`.

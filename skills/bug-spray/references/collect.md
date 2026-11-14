@@ -9,12 +9,20 @@ Do it yourself, no agents. Never change the user's working tree, index, or branc
 - `SNAP`: snapshot commit.
 - `CODE_ROOT`: `<run>/tree`, the snapshot worktree.
 
+## Resolve empty target
+Read-only checks, first match wins. Say which one was picked.
+1. `git status --porcelain` non-empty (includes untracked) → `uncommitted`.
+2. `gh pr view --json number,title,body,baseRefName,url` succeeds for the current branch and PR is open → `pr`. Skip silently if `gh` is missing, unauthenticated, or detached `HEAD`.
+3. Else → `default`.
+
 ## Scope
 `<DEF>` = remote default branch, else first existing of `origin/main`, `origin/master`, `main`, `master`.
+`<PRBASE>` = `origin/<baseRefName>` if it exists, else `<baseRefName>`. Never fetch.
 
 | Target | `BASE` | Snapshot of | `LABEL` |
 |---|---|---|---|
-| empty | merge-base `<DEF>` `HEAD` | working tree + untracked | `<DEF>...HEAD + working tree + untracked` |
+| `default` | merge-base `<DEF>` `HEAD` | working tree + untracked | `<DEF>...HEAD + working tree + untracked` |
+| `pr` | merge-base `<PRBASE>` `HEAD` | working tree + untracked | `PR #<number> <PRBASE>...HEAD` |
 | `<ref>` | merge-base `<ref>` `HEAD` | working tree + untracked | `<ref>...HEAD + working tree + untracked` |
 | `uncommitted` | `HEAD` | working tree + untracked | `uncommitted + untracked` |
 | `staged` | `HEAD` | index | `staged` |

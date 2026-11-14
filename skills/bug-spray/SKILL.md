@@ -1,6 +1,6 @@
 ---
 name: bug-spray
-description: Multi-agent code review of local changes. Parallel reviewer agents (correctness, quality, domain, tests, security, performance) find issues; separate grader agents verify each one and grade importance and certainty; only findings that pass the filter are shown in the terminal. Use when the user says "bug-spray", "review my changes/diff", or asks to review a local branch, staged or uncommitted changes.
+description: Multi-agent code review of local changes. Parallel reviewer agents (correctness, quality, domain, tests, security, performance) find issues; separate grader agents verify each one and grade importance and certainty; only findings that pass the filter are shown in the terminal. Use when the user says "bug-spray", "review my changes/diff", or asks to review a local branch, the current branch's PR, staged or uncommitted changes.
 ---
 
 # bug-spray
@@ -10,7 +10,7 @@ You orchestrate: collect, spawn reviewers, merge, spawn graders, filter, report.
 `<skill-dir>` = this skill's base directory.
 
 ## Input
-- `Target`: empty (branch vs default branch) | `staged` | `uncommitted` | any git ref. Scope per target: `references/collect.md`.
+- `Target`: empty (auto) | `staged` | `uncommitted` | `pr` | any git ref. Empty resolves to the first that applies: uncommitted changes → `uncommitted`; open PR for the current branch → `pr`; else branch vs default branch. Scope per target: `references/collect.md`.
 - `Focus`: optional user text, passed verbatim to every reviewer.
 
 ## Rules
@@ -30,7 +30,7 @@ You orchestrate: collect, spawn reviewers, merge, spawn graders, filter, report.
 
 3. **Packs.** For each `<skill-dir>/references/packs/*.md` except `README.md`: applies if its `applies_when` matches `files.txt` or manifests in `CODE_ROOT` (e.g. `package.json`). Give it to the axes in its `axes`.
 
-4. **meta.md.** Write `<run>/meta.md`: `LABEL`, `BASE`, `HEAD_SHA`, `SNAP`, `CODE_ROOT`, branch name, commit messages (stated intent), `Focus` or `none`, paths of the collected files.
+4. **meta.md.** Write `<run>/meta.md`: `LABEL`, `BASE`, `HEAD_SHA`, `SNAP`, `CODE_ROOT`, branch name, commit messages and, for `pr`, PR title and body (stated intent), `Focus` or `none`, paths of the collected files.
 
 5. **Review.** In one message, spawn six `general-purpose` agents, one per axis: `correctness`, `quality`, `domain`, `tests`, `security`, `performance`.
    ```
