@@ -21,5 +21,9 @@ Include link to Jira ticket. If no ticket is assignable to pull request, omit wh
 ## Notes
 Include any additional notes that could be useful for reviewer. If there are no notes, omit whole section.
 
-## UI Evidence
-Include available screenshots, design links or videos. If none is available, omit whole section.
+## Evidence
+Include evidence that content of pr is functioning. Example is test run results, static check passes and others.
+
+For visual changes, embed the screenshots uploaded in the "Upload visual evidence" step, plus any design links or videos.
+
+If there is no evidence at all, omit whole section.
