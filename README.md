@@ -18,6 +18,8 @@ scripts/     helper scripts (install, etc.)
 | [bug-spray](skills/bug-spray/SKILL.md) | Multi-agent code review of local changes: axis reviewers find, independent graders verify, filtered findings in the terminal. |
 | [hive-mind](skills/hive-mind/SKILL.md) | Autonomously implement a spec's tickets: fresh implementer, functional and design tester, and fixer agents per ticket, bug-spray at the end. |
 | [pr-composer](skills/pr-composer/SKILL.md) | Compose and create/update a pull request from the branch, respecting the repository's policy and conventions. |
+| [pr-pit-stop](skills/pr-pit-stop/SKILL.md) | Work through PR review comments one at a time (fix or ignore), fix the agreed ones, reply with one-liners. |
+| [pr-projector](skills/pr-projector/SKILL.md) | Visual artifact of a PR's high-level concepts (design, flows, architecture, decisions, risks) for human code review. |
 
 ## Install
 
