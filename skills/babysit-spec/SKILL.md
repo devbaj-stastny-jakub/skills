@@ -38,28 +38,36 @@ Loop those steps until whole spec is implemented
 
 - confirms its worktree is based on integration branch
 - calls skill `tdd` to implement the ticket
-- runs typechecking, single test files regularly and full test suite once at the end
+- runs typechecking and only tests of touched files. never full test suite
 - once done, use `code-review` skill to review work
+- make only one commit at the end
 
 3. once an implementer subagent completes, merge its work to the integration branch with a merger subagent
-4. if frontier of tickets changes, run more implementer subagents to ensure maximum concurrency
+4. cleanup after implementer once its work is merged
+5. if frontier of tickets changes, run more implementer subagents to ensure maximum concurrency
 
 ### Step 4
 
-Once all tickets are implemented, run `bug-spray` on integration branch. Run fixer subagent for each issue found
+Once all tickets are implemented, run full test suite and `bug-spray` on integration branch. Fix each failing test and each finding, see [Fixing](#fixing).
 
 ### Step 5
 
-Kick off tester subagent to test functional behavior of spec implementation. Use available tooling for interactive e2e testing like fetch tools, browser testing tools and others
+Kick off tester subagent to test functional behavior of spec implementation or check if issues reported in step 6 were resolved. Use available tooling for interactive e2e testing like fetch tools, browser testing tools and others
 
 ### Step 6
 
-Run fixer subagent for each issue found by tester subagent. Repeat steps 5 and 6 until all issues are resolved or until you hit max of 5 iterations.
+Fix each issue found by tester subagent, see [Fixing](#fixing). Repeat steps 5 and 6 until all issues are resolved or until you hit max of 5 iterations.
 
 ### Step 7
 
-Cleanup all implementer subagent worktrees
+Cleanup all worktrees, processes and other things that were produced during session.
 
 ### Step 8
 
 Rename implementation branch according to repository standards and create draft pull requests using `pr-composer` skill
+
+## Fixing
+
+1. run one fixer subagent per issue, all in parallel. each in its own worktree on its own branch based on integration branch. runs typechecking and only tests of touched files
+2. once a fixer completes, merge its work to the integration branch with a merger subagent
+3. once all fixes are merged, run full test suite on integration branch. treat failures as new issues
