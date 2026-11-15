@@ -6,7 +6,6 @@ Personal collection of [Claude Code](https://claude.com/claude-code) skills for 
 
 ```
 skills/      one folder per skill, each with a SKILL.md
-evals/       benchmark harnesses per skill (see evals/bug-spray/README.md)
 docs/        authoring notes and conventions
 scripts/     helper scripts (install, etc.)
 ```
