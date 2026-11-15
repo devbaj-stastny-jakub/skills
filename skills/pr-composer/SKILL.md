@@ -38,13 +38,7 @@ Get list of all available labels from repository and pick appropriate ones. Do n
 ## 5. Upload visual evidence
 Skip unless the diff changes something visible.
 
-GitHub has no API for image attachments, so upload screenshots with `scripts/upload-evidence.sh` and embed the Markdown lines it prints:
-
-```bash
-<skill-dir>/scripts/upload-evidence.sh <source-branch> <file>...
-```
-
-It commits the files to the `pr-evidence` branch on `origin` without touching the working tree, and prints URLs pinned to that commit. They render in private repositories for anyone with read access.
+GitHub has no API for image attachments. Commit screenshots to a dedicated `pr-evidence` branch through the GitHub Contents API using `gh`, never touching the local working tree. Create the branch if it does not exist. Embed images by raw URL pinned to the upload commit SHA, so later uploads never change what an older PR shows.
 
 - Use screenshots taken for this change in this session; `playwright-cli` saves them to `.playwright-cli/` by default. If there are none, ask user to provide them.
 - View each image before uploading. Upload only ones that show the change, and none exposing secrets, tokens or real personal data: everyone with repository access can read the branch.
@@ -63,4 +57,4 @@ Create or update pull request based on resolved mode with new title, description
 - If anything is unclear, ask user for clarification
 
 ## Tools
-Use `git` and `gh` cli, and `scripts/upload-evidence.sh` for screenshots. If anything is unavailable, ask user to resolve missing dependency.
+Use `git` and `gh` cli. If anything is unavailable, ask user to resolve missing dependency.
